@@ -1,7 +1,7 @@
 import { TabNavigator, StackNavigator } from 'react-navigation'
 import MyDeck from '../components/deck/myDeck';
 import ScreenDecks from '../screens/screenDecks';
-import ScreenQuiz from '../screens/screenQuiz';
+import ScreenCreateDeck from '../screens/screenCreateDeck';
 import { primaryBackgroundColor, primaryColor, highlightBackgroundColor } from '../themes/default/colors';
 
 const Tabs = TabNavigator({
@@ -13,9 +13,9 @@ const Tabs = TabNavigator({
     },
   },
   Quiz: {
-    screen: ScreenQuiz,
+    screen: ScreenCreateDeck,
     navigationOptions: {
-      tabBarLabel: 'Quiz',
+      tabBarLabel: 'New Deck',
       //tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
     },
   }

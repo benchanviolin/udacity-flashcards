@@ -1,5 +1,5 @@
 export const styles = {
   flex: 1,
-  alignItems: 'center',
+  alignItems: 'stretch',
   justifyContent: 'center'
 }

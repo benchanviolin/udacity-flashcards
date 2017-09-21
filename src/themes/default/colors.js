@@ -11,3 +11,5 @@ export const highlightBackgroundColor = '#fcebbf';
 export const highlightColor = '#e7be52';
 export const textColor = '#000';
 export const textDataColor = '#ced6e3';
+export const deckBackgroundColor = '#27931d';
+export const deckColor = '#fff';

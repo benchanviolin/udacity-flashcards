@@ -3,10 +3,10 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './src/reducer';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
-import { primaryBackgroundColor, primaryColor } from './src/themes/default/colors';
+import { primaryBackgroundColor, primaryColor, highlightBackgroundColor } from './src/themes/default/colors';
 import { Constants } from 'expo';
 import MyDeck from './src/components/deck/myDeck';
-import MyHistory from './src/components/history/myHistory'
+import ScreenDecks from './src/screens/screenDecks';
 import { TabNavigator, StackNavigator } from 'react-navigation'
 
 function MyStatusBar ({backgroundColor, ...props}) {
@@ -19,9 +19,9 @@ function MyStatusBar ({backgroundColor, ...props}) {
 
 const Tabs = TabNavigator({
   History: {
-    screen: MyHistory,
+    screen: ScreenDecks,
     navigationOptions: {
-      tabBarLabel: 'History',
+      tabBarLabel: 'Decks',
       //tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
     },
   }
@@ -29,10 +29,14 @@ const Tabs = TabNavigator({
   navigationOptions: {
     header: null
   },
+
   tabBarOptions: {
     activeTintColor: primaryColor,
+    indicatorStyle: {
+      backgroundColor: highlightBackgroundColor
+    },
     style: {
-      height: 56,
+      height: 58,
       backgroundColor: primaryBackgroundColor,
       shadowColor: 'rgba(0, 0, 0, 0.24)',
       shadowOffset: {

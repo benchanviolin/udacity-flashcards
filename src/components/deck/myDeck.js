@@ -5,7 +5,7 @@ export default class MyDeck extends Component {
   render() {
     return (
       <View>
-        <Text>HEY YOU</Text>
+        <Text>This is a deck.</Text>
       </View>
     )
   }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import * as ScreenStyles from '../themes/default/screens';
 
 export default class ScreenQuiz extends Component {
   render() {
@@ -10,3 +11,9 @@ export default class ScreenQuiz extends Component {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  screen: {
+    ...ScreenStyles.styles
+  }
+})

@@ -1,7 +1,11 @@
 import { GET_DECKS } from './deckActions.js';
 
 const initialState = {
-  rows: []
+  rows: [
+    {
+      name: 'Ben'
+    }
+  ]
 };
 
 export default (state = initialState, action) => {

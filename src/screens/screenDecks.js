@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import MyDeck from '../components/deck/myDeck';
 import * as ScreenStyles from '../themes/default/screens';
 
-export default class ScreenDecks extends Component {
+class ScreenDecks extends Component {
   render() {
-    let decks = [];
-    for(let i=0; i<10; i++) {
-      decks.push({
-        key: 'deck'+i,
-        name: 'Ben Deck'
-      });
-    }
+    let { decks } = this.props;
+
     return (
       <View style={styles.screen}>
         <View style={styles.header}>
@@ -29,6 +25,16 @@ export default class ScreenDecks extends Component {
     )
   }
 }
+
+function mapStateToProps ({ decks }) {
+  return {
+    decks
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(ScreenDecks)
 
 const styles = StyleSheet.create({
   screen: {

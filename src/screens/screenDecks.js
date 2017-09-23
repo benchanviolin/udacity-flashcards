@@ -15,7 +15,7 @@ export default class ScreenDecks extends Component {
     return (
       <View style={styles.screen}>
         <View style={styles.header}>
-          <Text>Choose a deck:</Text>
+          <Text style={styles.headerText}>Choose a deck:</Text>
         </View>
         <View style={styles.decks}>
           <FlatList
@@ -39,14 +39,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  headerText: {
+    fontSize: 20
+  },
   decks: {
     flex: 1
   },
   deck: {
     flex: 1,
     height: 100,
+    marginLeft: 10,
+    marginRight: 10,
     marginBottom: 10,
     alignItems: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'flex-start'
   }
 })

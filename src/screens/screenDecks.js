@@ -3,10 +3,21 @@ import { connect } from 'react-redux';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import MyDeck from '../components/deck/myDeck';
 import * as ScreenStyles from '../themes/default/screens';
+import sortBy from 'sort-by';
 
 class ScreenDecks extends Component {
   render() {
     let { decks } = this.props;
+    if (decks) {
+      console.log('BEFORE', decks);
+      decks.sort(sortBy('name'));
+      console.log('AFTER', decks);
+      decks = decks.map((deck, key) => {
+        deck.key = key;
+        deck.num = key+1;
+        return deck;
+      });
+    }
 
     return (
       <View style={styles.screen}>

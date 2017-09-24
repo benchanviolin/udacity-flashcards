@@ -9,9 +9,7 @@ class ScreenDecks extends Component {
   render() {
     let { decks } = this.props;
     if (decks) {
-      console.log('BEFORE', decks);
       decks.sort(sortBy('name'));
-      console.log('AFTER', decks);
       decks = decks.map((deck, key) => {
         deck.key = key;
         deck.num = key+1;

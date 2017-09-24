@@ -3,14 +3,15 @@ import MyDeck from '../components/deck/myDeck';
 import ScreenDecks from '../screens/screenDecks';
 import ScreenCreateDeck from '../screens/screenCreateDeck';
 import { primaryBackgroundColor, primaryColor, highlightBackgroundColor } from '../themes/default/colors';
+import screenViewDeck from '../screens/screenViewDeck';
 
 const Tabs = TabNavigator({
   Decks: {
     screen: ScreenDecks,
     navigationOptions: {
-      tabBarLabel: 'Decks',
+      tabBarLabel: 'Decks'
       //tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
-    },
+    }
   },
   Quiz: {
     screen: ScreenCreateDeck,
@@ -47,5 +48,15 @@ const Tabs = TabNavigator({
 export const MyNavigator = StackNavigator({
   Home: {
     screen: Tabs
+  },
+  ViewDeck: {
+    screen: screenViewDeck,
+    navigationOptions: {
+      title: 'Back to decks',
+      headerTintColor: primaryColor,
+      headerStyle: {
+        backgroundColor: primaryBackgroundColor
+      }
+    }
   }
 })

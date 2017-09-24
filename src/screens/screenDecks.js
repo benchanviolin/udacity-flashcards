@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import MyDeck from '../components/deck/myDeck';
 import * as ScreenStyles from '../themes/default/screens';
 import sortBy from 'sort-by';
@@ -25,9 +25,14 @@ class ScreenDecks extends Component {
         <View style={styles.decks}>
           <FlatList
             data={decks}
-            renderItem={({item}) => <View style={styles.deck}>
-              <MyDeck {...item} />
-            </View>}
+            renderItem={({ item }) => <TouchableOpacity
+              style={styles.deck}
+              onPress={() => this.props.navigation.navigate(
+              'ViewDeck',
+              { item }
+            )}>
+                <MyDeck {...item} />
+              </TouchableOpacity>}
           />
         </View>
       </View>

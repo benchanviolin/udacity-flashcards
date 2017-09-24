@@ -5,13 +5,14 @@ import { deckBackgroundColor, deckColor, highlightBackgroundColor, highlightColo
 
 export default class MyDeck extends Component {
   static propTypes = {
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired
   }
   render() {
     return (
       <View style={styles.wrapper}>
         <View style={styles.number}>
-          <Text style={styles.numberText}>#1</Text>
+          <Text style={styles.numberText}>#{this.props.id}</Text>
         </View>
         <View style={styles.body}>
           <Text style={styles.bodyText}>{this.props.name}</Text>

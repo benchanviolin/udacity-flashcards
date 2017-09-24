@@ -1,12 +1,10 @@
 import { GET_DECKS } from './deckActions.js';
 
-const initialState = {
-  rows: [
-    {
-      name: 'Ben'
-    }
-  ]
-};
+const initialState = [
+  {
+    name: 'Ben'
+  }
+];
 
 export default (state = initialState, action) => {
   switch (action.type) {

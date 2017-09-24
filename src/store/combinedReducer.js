@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import deckReducer from '../components/deck/deckReducer';
+import decks from '../components/deck/deckReducer';
 
 export default combineReducers({
-  deckReducer
+  decks
 });

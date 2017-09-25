@@ -31,7 +31,7 @@ class ScreenDecks extends Component {
               style={styles.deck}
               onPress={() => this.props.navigation.navigate(
               'ViewDeck',
-              { deck: item }
+              { id: item.id }
             )}>
                 <MyDeck {...item} />
               </TouchableOpacity>}

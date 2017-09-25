@@ -13,3 +13,5 @@ export const textColor = '#000';
 export const textDataColor = '#ced6e3';
 export const deckBackgroundColor = '#27931d';
 export const deckColor = '#fff';
+export const cardBackgroundColor = '#7B1395';
+export const cardColor = '#fff';

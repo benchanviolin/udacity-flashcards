@@ -7,7 +7,7 @@ export default class MyDeck extends Component {
   static propTypes = {
     num: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    cards: PropTypes.object.isRequired
+    cards: PropTypes.array.isRequired
   }
   render() {
     return (

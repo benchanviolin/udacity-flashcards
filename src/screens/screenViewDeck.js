@@ -3,7 +3,9 @@ import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as ScreenStyles from '../themes/default/screens';
-import * as cardToDeck from '../utils/cardToDeck.js';
+import * as CardToDeck from '../utils/cardToDeck.js';
+import PrimaryButton from '../components/buttons/primaryButton';
+import SubmitButton from '../components/buttons/submitButton';
 
 class ScreenViewDeck extends Component {
   static propTypes = {
@@ -15,15 +17,20 @@ class ScreenViewDeck extends Component {
     let deck = null;
     if (decks) {
       deck = decks.filter(deck => deck.id === id)[0];
-      deck.cards = cards ? cards.filter(card => cardToDeck.doesCardBelongToDeck(card, deck)) : [];
+      deck.cards = cards ? cards.filter(card => CardToDeck.doesCardBelongToDeck(card, deck)) : [];
     }
 
     return (
       <View style={styles.screen}>
         {deck
-        ? <View style={styles.header}>
-            <Text style={styles.headerText}>{deck.title}</Text>
-            <Text style={styles.headerText}>{cardToDeck.showNumberOfCards(deck.cards.length)}</Text>
+        ? <View style={styles.wrap}>
+            <View style={styles.header}>
+              <Text style={styles.headerText}>{deck.title}</Text>
+              <Text style={styles.headerText}>{CardToDeck.showNumberOfCards(deck.cards.length)}</Text>
+            </View>
+            <View style={styles.buttons}>
+              <Text>BUTTON</Text>
+            </View>
           </View>
         : <Text>Loading...</Text>
         }
@@ -48,12 +55,24 @@ const styles = StyleSheet.create({
     ...ScreenStyles.styles,
     justifyContent: 'flex-start'
   },
-  header: {
-    marginTop: 15,
+  wrap: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
   },
+  header: {
+    flex: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 50
+  },
   headerText: {
     fontSize: 20
+  },
+  buttons: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingBottom: 50
   }
 })

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import { deckBackgroundColor, deckColor, highlightBackgroundColor, highlightColor } from '../../themes/default/colors';
-import * as cardToDeck from '../../utils/cardToDeck';
+import * as CardToDeck from '../../utils/cardToDeck';
 
 export default class MyDeck extends Component {
   static propTypes = {
@@ -18,7 +18,7 @@ export default class MyDeck extends Component {
         </View>
         <View style={styles.body}>
           <Text style={styles.bodyText}>{this.props.title}</Text>
-          <Text style={styles.bodyText}>{cardToDeck.showNumberOfCards(this.props.cards.length)}</Text>
+          <Text style={styles.bodyText}>{CardToDeck.showNumberOfCards(this.props.cards.length)}</Text>
         </View>
       </View>
     )

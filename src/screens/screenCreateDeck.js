@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
 import MyDeck from '../components/deck/myDeck';
 import * as ScreenStyles from '../themes/default/screens';
 import SubmitButton from '../components/buttons/submitButton';
-import { default as UUID } from 'uuid'
+import { default as UUID } from 'uuid';
+import { addDeck } from '../components/deck/deckActions';
 
-export default class ScreenCreateDeck extends Component {
+class ScreenCreateDeck extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,6 +16,9 @@ export default class ScreenCreateDeck extends Component {
   }
   createDeck = () => {
     console.log(this.state.title);
+    const { title } = this.state;
+    const id = UUID.v4();
+    this.props.addDeck({ id, title });
   }
   render() {
     return (
@@ -35,6 +40,23 @@ export default class ScreenCreateDeck extends Component {
     )
   }
 }
+
+function mapStateToProps ({ decks }) {
+  return {
+    decks
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    addDeck: (deck) => dispatch(addDeck(deck))
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ScreenCreateDeck)
 
 const styles = StyleSheet.create({
   screen: {

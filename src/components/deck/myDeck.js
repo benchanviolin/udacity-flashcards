@@ -6,7 +6,8 @@ import { deckBackgroundColor, deckColor, highlightBackgroundColor, highlightColo
 export default class MyDeck extends Component {
   static propTypes = {
     num: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
+    cards: PropTypes.object.isRequired
   }
   render() {
     return (
@@ -16,6 +17,7 @@ export default class MyDeck extends Component {
         </View>
         <View style={styles.body}>
           <Text style={styles.bodyText}>{this.props.title}</Text>
+          <Text style={styles.bodyText}>{this.props.cards.length} cards</Text>
         </View>
       </View>
     )

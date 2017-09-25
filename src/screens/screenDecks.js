@@ -4,15 +4,17 @@ import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native
 import MyDeck from '../components/deck/myDeck';
 import * as ScreenStyles from '../themes/default/screens';
 import sortBy from 'sort-by';
+import * as cardToDeck from '../utils/cardToDeck.js';
 
 class ScreenDecks extends Component {
   render() {
-    let { decks } = this.props;
+    let { decks, cards } = this.props;
     if (decks) {
       decks.sort(sortBy('-timestamp'));
       decks = decks.map((deck, key) => {
         deck.key = key;
         deck.num = key+1;
+        deck.cards = cards ? cards.filter(card => cardToDeck.doesCardBelongToDeck(card, deck)) : [];
         return deck;
       });
     }
@@ -40,9 +42,10 @@ class ScreenDecks extends Component {
   }
 }
 
-function mapStateToProps ({ decks }) {
+function mapStateToProps ({ decks, cards }) {
   return {
-    decks
+    decks,
+    cards
   }
 }
 

@@ -12,7 +12,10 @@ class ScreenViewDeck extends Component {
     navigation: PropTypes.object.isRequired
   }
   pressNewCard = () => {
-    console.log('yo');
+    console.log('new card');
+  }
+  pressStartQuiz = () => {
+    console.log('start quiz');
   }
   render() {
     const { id } = this.props.navigation.state.params;
@@ -38,7 +41,7 @@ class ScreenViewDeck extends Component {
               />
               <PrimaryButton
                 title="Start Quiz"
-                onPress={this.pressNewCard}
+                onPress={this.pressStartQuiz}
               />
             </View>
           </View>

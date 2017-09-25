@@ -32,8 +32,12 @@ class ScreenViewDeck extends Component {
               <Text style={styles.headerText}>{CardToDeck.showNumberOfCards(deck.cards.length)}</Text>
             </View>
             <View style={styles.buttons}>
-              <PrimaryButton
+              <SubmitButton
                 title="New Card"
+                onPress={this.pressNewCard}
+              />
+              <PrimaryButton
+                title="Start Quiz"
                 onPress={this.pressNewCard}
               />
             </View>
@@ -67,7 +71,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   header: {
-    flex: 3,
+    flex: 5,
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 50
@@ -76,9 +80,9 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   buttons: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    flex: 2,
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
     paddingBottom: 50
   }
 })

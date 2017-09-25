@@ -23,7 +23,7 @@ class ScreenViewDeck extends Component {
         {deck
         ? <View style={styles.header}>
             <Text style={styles.headerText}>{deck.title}</Text>
-            <Text style={styles.headerText}>{deck.cards.length} cards</Text>
+            <Text style={styles.headerText}>{cardToDeck.showNumberOfCards(deck.cards.length)}</Text>
           </View>
         : <Text>Loading...</Text>
         }

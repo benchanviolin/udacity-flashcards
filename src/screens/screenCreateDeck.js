@@ -20,9 +20,13 @@ class ScreenCreateDeck extends Component {
     const id = UUID.v4();
     const timestamp = Date.now();
     this.props.addDeck({ id, title, timestamp });
+    this.setState({ title: "" });
+    this.props.navigation.navigate('Decks');
   }
   deleteAllDecks = () => {
     this.props.deleteAllDecks();
+    this.setState({ title: "" });
+    this.props.navigation.navigate('Decks');
   }
   render() {
     return (

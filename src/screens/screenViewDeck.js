@@ -11,6 +11,9 @@ class ScreenViewDeck extends Component {
   static propTypes = {
     navigation: PropTypes.object.isRequired
   }
+  pressNewCard = () => {
+    console.log('yo');
+  }
   render() {
     const { id } = this.props.navigation.state.params;
     const { decks, cards } = this.props;
@@ -29,7 +32,10 @@ class ScreenViewDeck extends Component {
               <Text style={styles.headerText}>{CardToDeck.showNumberOfCards(deck.cards.length)}</Text>
             </View>
             <View style={styles.buttons}>
-              <Text>BUTTON</Text>
+              <PrimaryButton
+                title="New Card"
+                onPress={this.pressNewCard}
+              />
             </View>
           </View>
         : <Text>Loading...</Text>

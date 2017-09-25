@@ -1,24 +1,24 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { highlightColor, highlightBackgroundColor } from '../../themes/default/colors';
+import { primaryColor, primaryBackgroundColor } from '../../themes/default/colors';
 
-export default function SubmitBtn ({ title, onPress }) {
+export default function PrimaryBtn ({ title, onPress }) {
   return (
     <TouchableOpacity
-      style={styles.submitButton}
+      style={styles.primaryButton}
       onPress={onPress}>
-        <Text style={styles.submitButtonText}>{title}</Text>
+        <Text style={styles.primaryButtonText}>{title}</Text>
     </TouchableOpacity>
   )
 }
 
 const styles = StyleSheet.create({
-  submitButton: {
+  primaryButton: {
     padding: 15,
-    backgroundColor: highlightBackgroundColor,
+    backgroundColor: primaryBackgroundColor,
     borderRadius: 15
   },
-  submitButtonText: {
-    color: highlightColor
+  primaryButtonText: {
+    color: primaryColor
   }
 })

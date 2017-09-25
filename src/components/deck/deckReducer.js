@@ -1,4 +1,4 @@
-import { GET_DECKS, ADD_DECK } from './deckActions.js';
+import { GET_DECKS, ADD_DECK, DELETE_ALL_DECKS } from './deckActions.js';
 
 const initialState = [];
 
@@ -8,6 +8,8 @@ export default (state = initialState, action) => {
       return state;
     case ADD_DECK:
       return state.concat([ action.deck ]);
+    case DELETE_ALL_DECKS:
+      return [];
     default:
       return state;
   }

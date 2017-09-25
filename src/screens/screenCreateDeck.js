@@ -5,7 +5,7 @@ import MyDeck from '../components/deck/myDeck';
 import * as ScreenStyles from '../themes/default/screens';
 import SubmitButton from '../components/buttons/submitButton';
 import { default as UUID } from 'uuid';
-import { addDeck } from '../components/deck/deckActions';
+import { addDeck, deleteAllDecks } from '../components/deck/deckActions';
 
 class ScreenCreateDeck extends Component {
   constructor(props) {
@@ -19,6 +19,9 @@ class ScreenCreateDeck extends Component {
     const { title } = this.state;
     const id = UUID.v4();
     this.props.addDeck({ id, title });
+  }
+  deleteAllDecks = () => {
+    this.props.deleteAllDecks();
   }
   render() {
     return (
@@ -34,7 +37,16 @@ class ScreenCreateDeck extends Component {
           ></TextInput>
         </View>
         <View style={styles.submitButtonWrapper}>
-          <SubmitButton onPress={this.createDeck} />
+          <SubmitButton
+            title="SUBMIT"
+            onPress={this.createDeck}
+          />
+        </View>
+        <View style={styles.deleteButtonWrapper}>
+          <SubmitButton
+            title="DELETE ALL DECKS"
+            onPress={this.deleteAllDecks}
+          />
         </View>
       </View>
     )
@@ -49,7 +61,8 @@ function mapStateToProps ({ decks }) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    addDeck: (deck) => dispatch(addDeck(deck))
+    addDeck: (deck) => dispatch(addDeck(deck)),
+    deleteAllDecks: () => dispatch(deleteAllDecks())
   }
 }
 
@@ -86,5 +99,9 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 6,
     shadowOpacity: 1
+  },
+  deleteButtonWrapper: {
+    position: 'absolute',
+    bottom: 0
   }
 })

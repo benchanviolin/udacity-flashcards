@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import * as ScreenStyles from '../themes/default/screens';
 import SubmitButton from '../components/buttons/submitButton';
 import { default as UUID } from 'uuid';
-import { addCard } from '../components/card/cardActions';
+import { addCard, deleteAllCards } from '../components/card/cardActions';
 
 const initialState = {
   question: "",
@@ -28,9 +28,10 @@ class ScreenAddCard extends Component {
     this.props.navigation.dispatch(NavigationActions.back());
   }
   deleteAllCards = () => {
-    /*this.props.deleteAllDecks();
+    const deckId = this.props.activeDeck.id;
+    this.props.deleteAllCards(deckId);
     this.setState(initialState);
-    this.props.navigation.navigate('Decks');*/
+    this.props.navigation.dispatch(NavigationActions.back());
   }
   render() {
     return (
@@ -81,7 +82,7 @@ function mapStateToProps ({ activeDeck }) {
 function mapDispatchToProps (dispatch) {
   return {
     addCard: (card) => dispatch(addCard(card)),
-    //deleteAllDecks: () => dispatch(deleteAllDecks())
+    deleteAllCards: (deckId) => dispatch(deleteAllCards(deckId))
   }
 }
 

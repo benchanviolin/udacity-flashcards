@@ -1,32 +1,35 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import * as ScreenStyles from '../themes/default/screens';
 import SubmitButton from '../components/buttons/submitButton';
 import { default as UUID } from 'uuid';
 import { addCard } from '../components/card/cardActions';
 
+const initialState = {
+  question: "",
+  answer: ""
+}
+
 class ScreenAddCard extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      question: "",
-      answer: ""
-    }
+    this.state = initialState;
   }
   addCard = () => {
     console.log(this.state.question);
-    /*const { title } = this.state;
+    const { question, answer } = this.state;
     const id = UUID.v4();
     const timestamp = Date.now();
     const deckId = this.props.activeDeck.id;
-    this.props.addDeck({ id, title, timestamp, deckId });
-    this.setState({ question: "", answer: "" });
-    this.props.navigation.navigate('Decks');*/
+    this.props.addCard({ id, question, answer, timestamp, deckId });
+    this.setState(initialState);
+    this.props.navigation.dispatch(NavigationActions.back());
   }
   deleteAllCards = () => {
     /*this.props.deleteAllDecks();
-    this.setState({ question: "" , answer: "" });
+    this.setState(initialState);
     this.props.navigation.navigate('Decks');*/
   }
   render() {
@@ -55,7 +58,7 @@ class ScreenAddCard extends Component {
         <View style={styles.submitButtonWrapper}>
           <SubmitButton
             title="SUBMIT"
-            onPress={this.createDeck}
+            onPress={this.addCard}
           />
         </View>
         <View style={styles.deleteButtonWrapper}>

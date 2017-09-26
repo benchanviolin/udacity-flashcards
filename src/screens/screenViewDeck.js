@@ -21,7 +21,7 @@ class ScreenViewDeck extends Component {
     let activeDeck = null;
     if (decks) {
       activeDeck = decks.filter(deck => deck.id === id)[0];
-      activeDeck.cards = cards ? cards.filter(card => CardToDeck.doesCardBelongToDeck(card, deck)) : [];
+      activeDeck.cards = cards ? cards.filter(card => CardToDeck.doesCardBelongToDeck(card, activeDeck)) : [];
       this.props.setActiveDeck(activeDeck);
     }
   }

@@ -5,13 +5,16 @@ import * as ScreenStyles from '../themes/default/screens';
 import SubmitButton from '../components/buttons/submitButton';
 import { default as UUID } from 'uuid';
 import { addDeck, deleteAllDecks } from '../components/deck/deckActions';
+import { deleteAllCards } from '../components/card/cardActions';
+
+const initialState = {
+  title: ""
+}
 
 class screenAddDeck extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: ""
-    }
+    this.state = initialState;
   }
   createDeck = () => {
     console.log(this.state.title);
@@ -19,12 +22,13 @@ class screenAddDeck extends Component {
     const id = UUID.v4();
     const timestamp = Date.now();
     this.props.addDeck({ id, title, timestamp });
-    this.setState({ title: "" });
+    this.setState(initialState);
     this.props.navigation.navigate('Decks');
   }
   deleteAllDecks = () => {
     this.props.deleteAllDecks();
-    this.setState({ title: "" });
+    this.props.deleteAllCards();
+    this.setState(initialState);
     this.props.navigation.navigate('Decks');
   }
   render() {
@@ -66,7 +70,8 @@ function mapStateToProps ({ decks }) {
 function mapDispatchToProps (dispatch) {
   return {
     addDeck: (deck) => dispatch(addDeck(deck)),
-    deleteAllDecks: () => dispatch(deleteAllDecks())
+    deleteAllDecks: () => dispatch(deleteAllDecks()),
+    deleteAllCards: () => dispatch(deleteAllCards())
   }
 }
 

@@ -6,7 +6,7 @@ import SubmitButton from '../components/buttons/submitButton';
 import { default as UUID } from 'uuid';
 import { addDeck, deleteAllDecks } from '../components/deck/deckActions';
 
-class ScreenCreateDeck extends Component {
+class screenAddDeck extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,7 +73,7 @@ function mapDispatchToProps (dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ScreenCreateDeck)
+)(screenAddDeck)
 
 const styles = StyleSheet.create({
   screen: {

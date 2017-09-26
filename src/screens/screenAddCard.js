@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Keyboard  } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 import * as ScreenStyles from '../themes/default/screens';
 import SubmitButton from '../components/buttons/submitButton';
 import { default as UUID } from 'uuid';
 import { addCard, deleteAllCards } from '../components/card/cardActions';
+import Popup from 'react-native-popup';
 
 const initialState = {
   question: "",
@@ -18,8 +19,17 @@ class ScreenAddCard extends Component {
     this.state = initialState;
   }
   addCard = () => {
-    console.log(this.state.question);
     const { question, answer } = this.state;
+    if (question === '') {
+      Keyboard.dismiss();
+      this.popup.alert('Please enter a question.');
+      return;
+    }
+    if (answer === '') {
+      Keyboard.dismiss();
+      this.popup.alert('Please enter an answer.');
+      return;
+    }
     const id = UUID.v4();
     const timestamp = Date.now();
     const deckId = this.props.activeDeck.id;
@@ -68,6 +78,7 @@ class ScreenAddCard extends Component {
             onPress={this.deleteAllCards}
           />
         </View>
+        <Popup ref={popup => this.popup = popup }/>
       </View>
     )
   }

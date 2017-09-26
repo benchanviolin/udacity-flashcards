@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Keyboard } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Popup from 'react-native-popup';
 import * as ScreenStyles from '../themes/default/screens';
 import * as CardToDeck from '../utils/cardToDeck.js';
 import PrimaryButton from '../components/buttons/primaryButton';
@@ -25,13 +26,18 @@ class ScreenViewDeck extends Component {
       this.props.setActiveDeck(activeDeck);
     }
   }
-  pressCreateNewQuestion = () => {
-    console.log('create new question');
+  pressAddCard = () => {
     this.props.navigation.navigate(
       'AddCard'
     );
   }
   pressStartAQuiz = () => {
+    const { activeDeck } = this.props;
+    if (activeDeck.cards.length === 0) {
+      Keyboard.dismiss();
+      this.popup.alert('Please add at least one card.');
+      return;
+    }
     console.log('start a quiz');
   }
   render() {
@@ -54,8 +60,8 @@ class ScreenViewDeck extends Component {
           </View>
           <View style={styles.buttons}>
             <SubmitButton
-              title="Create New Question"
-              onPress={this.pressCreateNewQuestion}
+              title="Add New Card"
+              onPress={this.pressAddCard}
             />
             <PrimaryButton
               title="Start a Quiz"
@@ -63,6 +69,7 @@ class ScreenViewDeck extends Component {
             />
           </View>
         </View>
+        <Popup ref={popup => this.popup = popup }/>
       </View>
     )
   }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 import { connect } from 'react-redux';
+import Popup from 'react-native-popup';
 import * as ScreenStyles from '../themes/default/screens';
 import SubmitButton from '../components/buttons/submitButton';
 import { default as UUID } from 'uuid';
@@ -17,8 +18,12 @@ class screenAddDeck extends Component {
     this.state = initialState;
   }
   createDeck = () => {
-    console.log(this.state.title);
     const { title } = this.state;
+    if (title === '') {
+      Keyboard.dismiss();
+      this.popup.alert('Please enter a title.');
+      return;
+    }
     const id = UUID.v4();
     const timestamp = Date.now();
     this.props.addDeck({ id, title, timestamp });
@@ -56,6 +61,7 @@ class screenAddDeck extends Component {
             onPress={this.deleteAllDecks}
           />
         </View>
+        <Popup ref={popup => this.popup = popup }/>
       </View>
     )
   }

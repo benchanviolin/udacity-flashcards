@@ -5,6 +5,7 @@ import screenAddDeck from '../screens/screenAddDeck';
 import { primaryBackgroundColor, primaryColor, highlightBackgroundColor } from '../themes/default/colors';
 import screenViewDeck from '../screens/screenViewDeck';
 import screenAddCard from '../screens/screenAddCard';
+import screenQuiz from '../screens/screenQuiz';
 
 const Tabs = TabNavigator({
   Decks: {
@@ -14,10 +15,10 @@ const Tabs = TabNavigator({
       //tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
     }
   },
-  Quiz: {
+  AddDeck: {
     screen: screenAddDeck,
     navigationOptions: {
-      tabBarLabel: 'New Deck',
+      tabBarLabel: 'Add New Deck',
       //tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
     },
   }
@@ -64,6 +65,16 @@ export const MyNavigator = StackNavigator({
     screen: screenAddCard,
     navigationOptions: {
       title: 'Cancel and go back',
+      headerTintColor: primaryColor,
+      headerStyle: {
+        backgroundColor: primaryBackgroundColor
+      }
+    }
+  },
+  StartQuiz: {
+    screen: screenQuiz,
+    navigationOptions: {
+      title: 'Exit quiz and go back',
       headerTintColor: primaryColor,
       headerStyle: {
         backgroundColor: primaryBackgroundColor

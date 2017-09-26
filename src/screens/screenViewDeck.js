@@ -38,7 +38,9 @@ class ScreenViewDeck extends Component {
       this.popup.alert('Please add at least one card.');
       return;
     }
-    console.log('start a quiz');
+    this.props.navigation.navigate(
+      'StartQuiz'
+    );
   }
   render() {
     const { id } = this.props.navigation.state.params;

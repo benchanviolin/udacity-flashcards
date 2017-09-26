@@ -6,61 +6,79 @@ import * as ScreenStyles from '../themes/default/screens';
 import * as CardToDeck from '../utils/cardToDeck.js';
 import PrimaryButton from '../components/buttons/primaryButton';
 import SubmitButton from '../components/buttons/submitButton';
+import { setActiveDeck } from '../components/deck/activeDeckActions';
 
 class ScreenViewDeck extends Component {
   static propTypes = {
     navigation: PropTypes.object.isRequired
   }
-  pressNewCard = () => {
-    console.log('new card');
+  componentDidMount() {
+    const { id } = this.props.navigation.state.params;
+    const { decks, cards } = this.props;
+    let activeDeck = null;
+    if (decks) {
+      activeDeck = decks.filter(deck => deck.id === id)[0];
+      activeDeck.cards = cards ? cards.filter(card => CardToDeck.doesCardBelongToDeck(card, deck)) : [];
+      this.props.setActiveDeck(activeDeck);
+    }
   }
-  pressStartQuiz = () => {
-    console.log('start quiz');
+  pressCreateNewQuestion = () => {
+    console.log('create new question');
+  }
+  pressStartAQuiz = () => {
+    console.log('start a quiz');
   }
   render() {
     const { id } = this.props.navigation.state.params;
-    const { decks, cards } = this.props;
-    let deck = null;
-    if (decks) {
-      deck = decks.filter(deck => deck.id === id)[0];
-      deck.cards = cards ? cards.filter(card => CardToDeck.doesCardBelongToDeck(card, deck)) : [];
+    const { activeDeck } = this.props;
+    if (!activeDeck) {
+      return (
+        <View style={styles.screen}>
+          <Text>Loading... please wait.</Text>
+        </View>
+      )
     }
 
     return (
       <View style={styles.screen}>
-        {deck
-        ? <View style={styles.wrap}>
-            <View style={styles.header}>
-              <Text style={styles.headerText}>{deck.title}</Text>
-              <Text style={styles.headerText}>{CardToDeck.showNumberOfCards(deck.cards.length)}</Text>
-            </View>
-            <View style={styles.buttons}>
-              <SubmitButton
-                title="Create New Question"
-                onPress={this.pressNewCard}
-              />
-              <PrimaryButton
-                title="Start a Quiz"
-                onPress={this.pressStartQuiz}
-              />
-            </View>
+        <View style={styles.wrap}>
+          <View style={styles.header}>
+            <Text style={styles.headerText}>{activeDeck.title}</Text>
+            <Text style={styles.headerText}>{CardToDeck.showNumberOfCards(activeDeck.cards.length)}</Text>
           </View>
-        : <Text>Loading...</Text>
-        }
+          <View style={styles.buttons}>
+            <SubmitButton
+              title="Create New Question"
+              onPress={this.pressCreateNewQuestion}
+            />
+            <PrimaryButton
+              title="Start a Quiz"
+              onPress={this.pressStartAQuiz}
+            />
+          </View>
+        </View>
       </View>
     )
   }
 }
 
-function mapStateToProps ({ decks, cards }) {
+function mapStateToProps ({ decks, activeDeck, cards }) {
   return {
     decks,
+    activeDeck,
     cards
   }
 }
 
+function mapDispatchToProps (dispatch) {
+  return {
+    setActiveDeck: (deck) => dispatch(setActiveDeck(deck))
+  }
+}
+
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ScreenViewDeck)
 
 const styles = StyleSheet.create({

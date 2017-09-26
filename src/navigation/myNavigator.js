@@ -4,6 +4,7 @@ import ScreenDecks from '../screens/screenDecks';
 import ScreenCreateDeck from '../screens/screenCreateDeck';
 import { primaryBackgroundColor, primaryColor, highlightBackgroundColor } from '../themes/default/colors';
 import screenViewDeck from '../screens/screenViewDeck';
+import screenAddCard from '../screens/screenAddCard';
 
 const Tabs = TabNavigator({
   Decks: {
@@ -53,6 +54,16 @@ export const MyNavigator = StackNavigator({
     screen: screenViewDeck,
     navigationOptions: {
       title: 'Back to decks',
+      headerTintColor: primaryColor,
+      headerStyle: {
+        backgroundColor: primaryBackgroundColor
+      }
+    }
+  },
+  AddCard: {
+    screen: screenAddCard,
+    navigationOptions: {
+      title: 'Cancel and go back',
       headerTintColor: primaryColor,
       headerStyle: {
         backgroundColor: primaryBackgroundColor

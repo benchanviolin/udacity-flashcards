@@ -27,6 +27,9 @@ class ScreenViewDeck extends Component {
   }
   pressCreateNewQuestion = () => {
     console.log('create new question');
+    this.props.navigation.navigate(
+      'AddCard'
+    );
   }
   pressStartAQuiz = () => {
     console.log('start a quiz');

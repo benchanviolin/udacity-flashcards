@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import MyDeck from '../components/deck/myDeck';
 import * as ScreenStyles from '../themes/default/screens';
 import SubmitButton from '../components/buttons/submitButton';
 import { default as UUID } from 'uuid';
@@ -96,14 +95,7 @@ const styles = StyleSheet.create({
     fontSize: 15
   },
   submitButtonWrapper: {
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 3
-    },
-    shadowRadius: 6,
-    shadowOpacity: 1
+    alignItems: 'center'
   },
   deleteButtonWrapper: {
     position: 'absolute',

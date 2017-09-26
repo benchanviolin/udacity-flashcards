@@ -55,7 +55,7 @@ export default connect(
 
 const styles = StyleSheet.create({
   screen: {
-    ...ScreenStyles.styles
+    ...ScreenStyles.styles.screen
   },
   header: {
     height: 50,

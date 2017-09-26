@@ -36,11 +36,11 @@ class ScreenViewDeck extends Component {
             </View>
             <View style={styles.buttons}>
               <SubmitButton
-                title="New Card"
+                title="Create New Question"
                 onPress={this.pressNewCard}
               />
               <PrimaryButton
-                title="Start Quiz"
+                title="Start a Quiz"
                 onPress={this.pressStartQuiz}
               />
             </View>
@@ -65,7 +65,7 @@ export default connect(
 
 const styles = StyleSheet.create({
   screen: {
-    ...ScreenStyles.styles,
+    ...ScreenStyles.styles.screen,
     justifyContent: 'flex-start'
   },
   wrap: {

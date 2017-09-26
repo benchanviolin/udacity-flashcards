@@ -14,6 +14,6 @@ export default class ScreenQuiz extends Component {
 
 const styles = StyleSheet.create({
   screen: {
-    ...ScreenStyles.styles
+    ...ScreenStyles.styles.screen
   }
 })

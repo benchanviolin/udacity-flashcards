@@ -16,7 +16,9 @@ const styles = StyleSheet.create({
   primaryButton: {
     padding: 15,
     backgroundColor: primaryBackgroundColor,
-    borderRadius: 15
+    borderRadius: 15,
+    width: 200,
+    alignItems: 'center'
   },
   primaryButtonText: {
     color: primaryColor

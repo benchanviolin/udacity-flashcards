@@ -4,6 +4,9 @@ _A React Native app developed by Ben Chan in Sept 2017 as part of the Udacity Re
 This app has been tested using the following device(s):
 * standard Android emulator `Nexus_5_API_23_x86`
 
+## Features
+* Redux store connected to AsyncStorage
+
 ## Installation
 * Start the Android emulator:
     - `cd $PATH_TO_ANDROID_SDK/emulator`

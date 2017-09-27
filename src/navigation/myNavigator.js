@@ -11,7 +11,7 @@ const Tabs = TabNavigator({
   Decks: {
     screen: ScreenDecks,
     navigationOptions: {
-      tabBarLabel: 'Decks'
+      tabBarLabel: 'All Decks'
       //tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
     }
   },
@@ -54,7 +54,7 @@ export const MyNavigator = StackNavigator({
   ViewDeck: {
     screen: screenViewDeck,
     navigationOptions: {
-      title: 'Back to decks',
+      title: 'Go back',
       headerTintColor: primaryColor,
       headerStyle: {
         backgroundColor: primaryBackgroundColor

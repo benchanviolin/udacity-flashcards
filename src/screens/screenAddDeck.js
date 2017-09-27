@@ -28,7 +28,11 @@ class screenAddDeck extends Component {
     const timestamp = Date.now();
     this.props.addDeck({ id, title, timestamp });
     this.setState(initialState);
-    this.props.navigation.navigate('Decks');
+    Keyboard.dismiss();
+    this.props.navigation.navigate(
+      'ViewDeck',
+      { id }
+    );
   }
   deleteAllDecks = () => {
     this.props.deleteAllDecks();

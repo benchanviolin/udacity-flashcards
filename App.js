@@ -31,7 +31,7 @@ const store = createStore(
 persistStore(store, {storage: AsyncStorage}, () => {
 });
 
-export default function App ({}) {
+export default function App () {
   return (
     <Provider store={store}>
       <View style={styles.container}>

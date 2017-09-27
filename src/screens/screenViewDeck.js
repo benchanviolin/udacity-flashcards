@@ -21,8 +21,10 @@ class ScreenViewDeck extends Component {
     let activeDeck = null;
     if (decks) {
       activeDeck = decks.filter(deck => deck.id === id)[0];
-      activeDeck.cards = cards ? cards.filter(card => CardToDeck.doesCardBelongToDeck(card, activeDeck)) : [];
-      this.props.setActiveDeck(activeDeck);
+      if (activeDeck) {
+        activeDeck.cards = cards ? cards.filter(card => CardToDeck.doesCardBelongToDeck(card, activeDeck)) : [];
+        this.props.setActiveDeck(activeDeck);
+      }
     }
   }
   pressAddCard = () => {
@@ -51,13 +53,14 @@ class ScreenViewDeck extends Component {
         </View>
       )
     }
+    const numberOfCards = activeDeck.cards ? CardToDeck.showNumberOfCards(activeDeck.cards.length) : 0;
 
     return (
       <View style={styles.screen}>
         <View style={styles.wrap}>
           <View style={styles.header}>
             <Text style={styles.headerTitle}>{activeDeck.title}</Text>
-            <Text style={styles.headerNumberOfCards}>{CardToDeck.showNumberOfCards(activeDeck.cards.length)}</Text>
+            <Text style={styles.headerNumberOfCards}>{ numberOfCards }</Text>
           </View>
           <View style={styles.buttons}>
             <SubmitButton

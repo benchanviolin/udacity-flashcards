@@ -11,11 +11,11 @@ import { MyNavigator } from './src/navigation/myNavigator';
 import {persistStore, autoRehydrate} from 'redux-persist'
 
 const logger = store => next => action => {
-  console.group(action.type);
-  console.info('dispatching', action);
+  //console.group(action.type);
+  //console.info('dispatching', action);
   let result = next(action);
-  console.log('next state', store.getState());
-  console.groupEnd(action.type);
+  //console.log('next state', store.getState());
+  //console.groupEnd(action.type);
   return result;
 }
 

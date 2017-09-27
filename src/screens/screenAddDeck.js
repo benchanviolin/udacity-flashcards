@@ -28,6 +28,7 @@ class ScreenAddDeck extends Component {
     this.props.addDeck({ id, title, timestamp });
     this.setState(initialState);
     Keyboard.dismiss();
+    this.props.navigation.navigate('Decks');
     this.props.navigation.navigate(
       'ViewDeck',
       { id }

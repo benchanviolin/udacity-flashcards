@@ -14,10 +14,9 @@ class ScreenViewDeck extends Component {
     navigation: PropTypes.object.isRequired
   }
   componentDidMount() {
-    this.reloadActiveDeck();
+    this.setActiveDeck(this.props.navigation.state.params.id);
   }
-  reloadActiveDeck = () => {
-    const { id } = this.props.navigation.state.params;
+  setActiveDeck = (id) => {
     const { decks, cards } = this.props;
     let activeDeck = null;
     if (decks) {

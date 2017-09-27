@@ -3,6 +3,7 @@ _A React Native app developed by Ben Chan in Sept 2017 as part of the Udacity Re
 
 This app has been tested using the following device(s):
 * standard Android emulator `Nexus_5_API_23_x86`
+* Samsung Galaxy S7 in Expo app
 
 ## Features
 * Redux store connected to AsyncStorage

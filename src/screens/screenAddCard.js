@@ -72,12 +72,14 @@ class ScreenAddCard extends Component {
             onPress={this.addCard}
           />
         </View>
+        {/*
         <View style={styles.deleteButtonWrapper}>
           <SubmitButton
             title="DELETE ALL CARDS"
             onPress={this.deleteAllCards}
           />
         </View>
+        */}
         <Popup ref={popup => this.popup = popup }/>
       </View>
     )

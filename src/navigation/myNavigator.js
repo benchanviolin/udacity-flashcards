@@ -1,11 +1,12 @@
 import { TabNavigator, StackNavigator } from 'react-navigation'
+import { primaryBackgroundColor, primaryColor, highlightBackgroundColor } from '../themes/default/colors';
 import MyDeck from '../components/deck/myDeck';
 import ScreenDecks from '../screens/screenDecks';
-import screenAddDeck from '../screens/screenAddDeck';
-import { primaryBackgroundColor, primaryColor, highlightBackgroundColor } from '../themes/default/colors';
-import screenViewDeck from '../screens/screenViewDeck';
-import screenAddCard from '../screens/screenAddCard';
-import screenQuiz from '../screens/screenQuiz';
+import ScreenAddDeck from '../screens/screenAddDeck';
+import ScreenViewDeck from '../screens/screenViewDeck';
+import ScreenDeleteDecks from '../screens/screenDeleteDecks';
+import ScreenAddCard from '../screens/screenAddCard';
+import ScreenQuiz from '../screens/screenQuiz';
 
 const Tabs = TabNavigator({
   Decks: {
@@ -16,9 +17,16 @@ const Tabs = TabNavigator({
     }
   },
   AddDeck: {
-    screen: screenAddDeck,
+    screen: ScreenAddDeck,
     navigationOptions: {
       tabBarLabel: 'Add New Deck',
+      //tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
+    },
+  },
+  DeleteAllDeck: {
+    screen: ScreenDeleteDecks,
+    navigationOptions: {
+      tabBarLabel: 'Delete Decks',
       //tabBarIcon: ({ tintColor }) => <Ionicons name='ios-bookmarks' size={30} color={tintColor} />
     },
   }
@@ -52,7 +60,7 @@ export const MyNavigator = StackNavigator({
     screen: Tabs
   },
   ViewDeck: {
-    screen: screenViewDeck,
+    screen: ScreenViewDeck,
     navigationOptions: {
       title: 'Go back',
       headerTintColor: primaryColor,
@@ -62,7 +70,7 @@ export const MyNavigator = StackNavigator({
     }
   },
   AddCard: {
-    screen: screenAddCard,
+    screen: ScreenAddCard,
     navigationOptions: {
       title: 'Cancel and go back',
       headerTintColor: primaryColor,
@@ -72,7 +80,7 @@ export const MyNavigator = StackNavigator({
     }
   },
   StartQuiz: {
-    screen: screenQuiz,
+    screen: ScreenQuiz,
     navigationOptions: {
       title: 'Exit quiz and go back',
       headerTintColor: primaryColor,

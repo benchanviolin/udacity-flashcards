@@ -17,8 +17,8 @@ export default class MyDeck extends Component {
           <Text style={styles.numberText}>#{this.props.num}</Text>
         </View>
         <View style={styles.body}>
-          <Text style={styles.bodyText}>{this.props.title}</Text>
-          <Text style={styles.bodyText}>{CardToDeck.showNumberOfCards(this.props.cards.length)}</Text>
+          <Text style={styles.bodyTitle}>{this.props.title}</Text>
+          <Text style={styles.bodyNumberOfCards}>{CardToDeck.showNumberOfCards(this.props.cards.length)}</Text>
         </View>
       </View>
     )
@@ -50,7 +50,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  bodyText: {
+  bodyTitle: {
+    color: deckColor,
+    fontSize: 20
+  },
+  bodyNumberOfCards: {
     color: deckColor
   }
 })

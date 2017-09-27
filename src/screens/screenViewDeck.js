@@ -57,8 +57,8 @@ class ScreenViewDeck extends Component {
       <View style={styles.screen}>
         <View style={styles.wrap}>
           <View style={styles.header}>
-            <Text style={styles.headerText}>{activeDeck.title}</Text>
-            <Text style={styles.headerText}>{CardToDeck.showNumberOfCards(activeDeck.cards.length)}</Text>
+            <Text style={styles.headerTitle}>{activeDeck.title}</Text>
+            <Text style={styles.headerNumberOfCards}>{CardToDeck.showNumberOfCards(activeDeck.cards.length)}</Text>
           </View>
           <View style={styles.buttons}>
             <SubmitButton
@@ -112,8 +112,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop: 50
   },
-  headerText: {
-    fontSize: 20
+  headerTitle: {
+    fontSize: 25
+  },
+  headerNumberOfCards: {
+    fontSize: 15
   },
   buttons: {
     flex: 2,

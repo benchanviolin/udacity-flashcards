@@ -41,7 +41,7 @@ Press CORRECT if you were correct.
 Press Incorrect if you were not correct.
 Once all questions have been marked, review your score.  Press PLAY AGAIN! to start a new quiz.  Press Exit quiz and go back to return to View Deck.
 
-### Add Deck
+## Add Deck
 Enter a title, then press SUBMIT to add the deck and automatically be redirected to View Deck.
 
 ## Delete Decks

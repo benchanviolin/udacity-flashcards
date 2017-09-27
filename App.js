@@ -6,6 +6,7 @@ import { StyleSheet, Text, View, StatusBar, AsyncStorage } from 'react-native';
 import { primaryBackgroundColor, primaryColor, highlightBackgroundColor } from './src/themes/default/colors';
 import MyStatusBar from './src/navigation/myStatusBar';
 import MyStore from './src/store/myStore';
+import MyNotifications from './src/notifications/myNotifications';
 import { MyNavigator } from './src/navigation/myNavigator';
 import {persistStore, autoRehydrate} from 'redux-persist'
 
@@ -36,6 +37,7 @@ export default function App () {
     <Provider store={store}>
       <View style={styles.container}>
         <MyStore />
+        <MyNotifications />
         <MyStatusBar backgroundColor={primaryBackgroundColor} />
         <MyNavigator />
       </View>

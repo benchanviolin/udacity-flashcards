@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import { clearLocalNotification, setLocalNotification } from '../utils/notifications';
 import * as ScreenStyles from '../themes/default/screens';
 import PrimaryButton from '../components/buttons/primaryButton';
 import SubmitButton from '../components/buttons/submitButton';
@@ -69,6 +70,12 @@ class ScreenQuiz extends Component {
     const { cardIdOrder, cardResults, cardState } = this.state;
 
     if (cardResults.length === cardIdOrder.length) {
+      clearLocalNotification()
+        .then(setLocalNotification)
+        .catch((error)=>{
+           alert(error.message);
+        });
+
       const score = cardResults.reduce((total, value) => total + value, 0);
       const perc = Math.round(score / cardResults.length * 100);
 

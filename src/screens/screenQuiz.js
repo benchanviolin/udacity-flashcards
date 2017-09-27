@@ -128,11 +128,11 @@ class ScreenQuiz extends Component {
               onPress={this.restartQuiz}
             />*/}
             <SubmitButton
-              title="CORRECT!"
+              title="CORRECT"
               onPress={this.markCorrect}
             />
           <DangerButton
-              title="Incorrect."
+              title="Incorrect"
               onPress={this.markIncorrect}
             />
           </View>

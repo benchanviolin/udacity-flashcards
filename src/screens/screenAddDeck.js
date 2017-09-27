@@ -29,10 +29,12 @@ class ScreenAddDeck extends Component {
     this.setState(initialState);
     Keyboard.dismiss();
     this.props.navigation.navigate('Decks');
-    this.props.navigation.navigate(
-      'ViewDeck',
-      { id }
-    );
+    setTimeout(() => {
+      this.props.navigation.navigate(
+        'ViewDeck',
+        { id }
+      );
+    }, 1);
   }
   render() {
     return (

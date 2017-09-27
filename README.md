@@ -15,7 +15,7 @@ This app has been tested using the following device(s):
     - `emulator -avd $AVD_NAME`
 * In another terminal window, install and start the app
     - `git clone https://github.com/benchanviolin/udacity-flashcards.git`
-    - `cd udacity-flashcards.git`
+    - `cd udacity-flashcards`
     - `yarn install`
     - `yarn run android`
 

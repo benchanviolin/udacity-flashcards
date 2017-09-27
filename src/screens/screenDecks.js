@@ -9,7 +9,7 @@ import * as CardToDeck from '../utils/cardToDeck.js';
 class ScreenDecks extends Component {
   render() {
     let { decks, cards } = this.props;
-    if (decks) {
+    if (decks && decks.length > 0) {
       decks.sort(sortBy('-timestamp'));
       decks = decks.map((deck, key) => {
         deck.key = key;
@@ -22,7 +22,12 @@ class ScreenDecks extends Component {
     return (
       <View style={styles.screen}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Choose a deck:</Text>
+          <Text style={styles.headerText}>
+            {decks.length > 0
+              ? 'Choose a deck below:'
+              : 'Add a new deck first!'
+            }
+          </Text>
         </View>
         <View style={styles.decks}>
           <FlatList

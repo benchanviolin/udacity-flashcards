@@ -1,5 +1,20 @@
 {
   "expo": {
-    "sdkVersion": "20.0.0"
+    "sdkVersion": "20.0.0",
+    "orientation": "portrait",
+    "name": "Flash Cards by Ben Chan",
+    "description": "Train your mind with flash card quizzes.",
+    "slug": "flashcardsbenchan",
+    "version": "1.0",
+    "icon": "https://png.icons8.com/sheets/ios7/100",
+    "notification": {
+      "icon": "https://png.icons8.com/sheets/ios7/100"
+    },
+    "ios": {
+      "bundleIdentifier": "org.flashcardsbenchan.exp"
+    },
+    "android": {
+      "package": "org.flashcardsbenchan.exp"
+    }
   }
 }
